@@ -9,6 +9,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
+    @story.author = current_user
     if @story.save
       redirect_to story_path(@story)
     else
@@ -18,6 +19,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @author = @story.author
   end
 
   def edit

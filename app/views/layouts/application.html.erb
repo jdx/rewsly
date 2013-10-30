@@ -8,12 +8,21 @@
 </head>
 <body>
 
+<h3>Categories</h3>
 <ul>
   <% Category.all.each do |category| %>
     <li><%= link_to category.name, category_path(category) %></li>
   <% end %>
 </ul>
 
+<% if session[:user_id] %>
+  <p>You are logged in as: <%= current_user.name %></p>
+  <p><%= link_to "Logout", "/logout" %></p>
+<% else %>
+  <p><%= link_to "Login", "/login" %></p>
+<% end %>
+
+<hr>
 
 <%= yield %>
 

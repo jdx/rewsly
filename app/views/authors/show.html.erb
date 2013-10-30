@@ -1,0 +1,6 @@
+<h1><%= @author.name %></h1>
+<ul>
+  <% @stories.each do |story| %>
+    <li><%= link_to story.title, "/stories/#{story.id}" %></li>
+  <% end %>
+</ul>
